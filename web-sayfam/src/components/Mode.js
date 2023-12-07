@@ -5,8 +5,8 @@ import { enAction, trAction } from "../actions/languageAction";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 
 export default function Mode() {
-  const [dark, setDark] = useLocalStorage("darkMode", false);
-  const [enLanguage, setEnLanguage] = useLocalStorage("language", false);  //neden true olunca local'e kaydetmiyor?
+  const [dark, setDark] = useLocalStorage("darkMode", true);
+  const [enLanguage, setEnLanguage] = useLocalStorage("language", true);  //neden true olunca local'e kaydetmiyor?
 
   const dispatch = useDispatch();
 
