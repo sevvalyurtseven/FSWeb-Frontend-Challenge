@@ -5,22 +5,26 @@ import { enAction, trAction } from "../actions/languageAction";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 
 export default function Mode() {
-  const [dark, setDark] = useLocalStorage("darkMode", true);
-  const [enLanguage, setEnLanguage] = useLocalStorage("language", true);
+  const [dark, setDark] = useLocalStorage("darkMode", false);
+  const [enLanguage, setEnLanguage] = useLocalStorage("language", false);  //neden true olunca local'e kaydetmiyor?
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     document.documentElement.classList.toggle("dark", dark);
-    enLanguage ? dispatch(trAction()) : dispatch(enAction());
-  }, [dark, enLanguage, dispatch]);
+    enLanguage ? dispatch(enAction()) : dispatch(trAction());
+  }, [dark, enLanguage]);
 
   const changeDarkMode = () => {
     setDark(!dark);
+    //document.documentElement.classList.toggle("dark", dark);
+    
   };
 
   const changeLanguageMode = () => {
-    setEnLanguage(!enLanguage);
+     setEnLanguage(!enLanguage);
+     //enLanguage ? dispatch(enAction()) : dispatch(trAction());
+   
   };
 
   return (
@@ -30,7 +34,7 @@ export default function Mode() {
           onClick={changeLanguageMode}
           className="dark:text-[#BAB2E7] text-[#4731D3]"
         >
-          {enLanguage ? "ENGLISH" : "TÜRKÇE'YE GEÇ"}
+          {enLanguage ? "TÜRKÇE'YE GEÇ" : "ENGLISH"}
         </button>
       </div>
       <span className="md:float-right pe-3 hidden md:inline-block text-[#777777]">

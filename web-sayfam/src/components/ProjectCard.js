@@ -12,8 +12,8 @@ const ProjectCard = () => {
   const ProductCardData = useSelector((store) => store.projectData);
   return (
     <div className="flex flex-wrap justify-between  md:flex-row flex-col container gap-2 mx-auto">
-      {ProductCardData?.map((data, index) => (
-        <Card key={index} className="mt-6 w-full md:w-[340px] mx-auto py-10 pt-12 dark:bg-[#252128] flex-shrink-0">
+      {ProductCardData?.map((data) => (
+        <Card  className="mt-6 w-full md:w-[340px] mx-auto py-10 pt-12 dark:bg-[#252128] flex-shrink-0">
           <CardHeader color="blue-gray" className="relative">
             <img src={data.resim} alt="card-image" />
           </CardHeader>
