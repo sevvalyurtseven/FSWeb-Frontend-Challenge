@@ -1,59 +1,52 @@
+import { useSelector } from "react-redux";
 import line from "../Assets/cizgi.svg";
+import {ProfileData} from "../mocks/ProfileData"
 
 export default function Profile() {
+  const ProfileData = useSelector((store) => store.profileData);
   return (
-    <div className="my-4">
+    <div className="md:my-4">
       <img src={line}></img>
-      <h2 className="dark:text-[#AEBCCF] font-semibold text-5xl py-6">
+      <h2 className="dark:text-[#AEBCCF] text[#1F2937] font-semibold md:text-5xl text-4xl py-6">
         Profile
       </h2>
-      <div className="flex justify-between">
+      <div className="md:flex md:justify-between">
         <div className="flex">
-          <div>
-            <h6 className="font-medium text-3xl dark:text-[#B7AAFF] pb-6">
+          <div className="md:w-3/4">
+            <h6 className="font-medium md:text-3xl text-xl text-[#4338CA] dark:text-[#B7AAFF] pb-6">
               Profile
             </h6>
-            <div className="flex gap-10">
-              <ul className="w-[30%]">
-                <li className="font-semibold text-lg dark:text-white ">
-                  Doğum tarihi
-                </li>
-                <li className="font-semibold text-lg dark:text-white ">
-                  İkamet Şehri
-                </li>
-                <li className="font-semibold text-lg dark:text-white ">
-                  Eğitim Durumu
-                </li>
-                <li className="font-semibold text-lg dark:text-white ">
-                  Tercih Ettiği Rol
-                </li>
-              </ul>
-              <ul>
-                <li className="font-normal text-lg dark:text-white ">
-                  24.03.1996
-                </li>
-                <li className="font-normal text-lg dark:text-white ">Ankara</li>
-                <li className="font-normal text-lg dark:text-white ">
-                  Hacettepe Ünv. Biyoloji Lisans, 2016
-                </li>
-                <li className="font-normal text-lg dark:text-white ">Frontend, UI</li>
-              </ul>
-              <p className="font-normal text-xs dark:text-white"></p>
+            <div className="flex flex-col md:grid grid-rows-4 md:gap-3 md:grid-flow-col">
+              <div className="dark:text-white text-lg font-semibold">Doğum tarihi </div>
+              <div className="dark:text-white text-lg font-semibold ">İkamet Şehri </div>
+              <div className="dark:text-white text-lg font-semibold">Eğitim Durumu</div>
+              <div className="dark:text-white text-lg font-semibold">Tercih Ettiği Rol</div>
+              
+              
+              <div className="dark:text-white text-lg font-normal">
+                {ProfileData.birthDate} </div>
+                <div className="dark:text-white text-lg font-normal">
+                {ProfileData.city} </div>
+                <div className="dark:text-white text-lg font-normal">
+                {ProfileData.education} </div>
+                <div className="dark:text-white text-lg font-normal">
+                {ProfileData.role} </div>
+              
+               
+              
             </div>
           </div>
         </div>
-        <div className="w-[576.9px]">
-          <h6 className="font-medium text-3xl dark:text-[#B7AAFF] pb-6">
+        <div className="w-[576.9px] md:mt-0 mt-5 ">
+          <h6 className="font-medium md:text-3xl text-xl text-[#4338CA] dark:text-[#B7AAFF] pb-6">
             About Me
           </h6>
-          <p className="font-normal text-xs dark:text-white mb-2 w-[400px]">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veniam
-            aut, odit laborum aliquam voluptatum nisi mollitia.
+          <p className="flex gap-3 font-normal text-xl text-[#6B7280] dark:text-white mb-2 w-[500px]">
+            {ProfileData.about[0]}
           </p>
 
-          <p className="font-normal text-xs dark:text-white w-[400px]">
-            Mnima accusamus ratione soluta aperiam sit voluptate? Dicta quod
-            deserunt quam temporibus cumque magnam!
+          <p className="flex gap-3 font-normal text-xl text-[#6B7280] dark:text-white mb-2 w-[500px] mt-10">
+           {ProfileData.about[1]}
           </p>
         </div>
       </div>
